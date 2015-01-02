@@ -33,7 +33,7 @@
  * functions
  */ 
  function safety_zone(domain){
- 	if( domain == 'account.ohm.vn' || domain =='adv.ohm.vn'){
+ 	if( domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
  		return false;
  	}
  	var body = document.getElementsByTagName("body");
