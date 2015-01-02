@@ -30,11 +30,17 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 	 		{
 	 			//
 	 			$('.OHMlogin').hide(); 
-	 			$('.OHMuserpanel').show(); 
-	 			
-	 			console.log(items.OHMtokenKey); 
-	 			var url_sso = 'http://account.ohm.vn/cck?a='+items.OHMtokenKey;
+	 			$('.OHMuserpanel').show();  
+
+	 			var url_sso = 'http://account.ohm.vn/cck?a='+items.OHMtokenKey; 
 	 			console.log(url_sso);
+
+	 			var script=document.createElement('img');
+				//script.setAttribute('style','display:none');
+				script.setAttribute('width','1px');
+				script.setAttribute('height','1px');
+				script.src=url_sso; 
+				$("body").append(script); 
 
 	 			$.ajax({
 		            url: url_sso,  

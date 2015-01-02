@@ -1,6 +1,10 @@
 ## Phiên bản hiện tại
-Phiên bản Beta 1.1
-Cập nhật: 15h:07 02/01/2015
+Phiên bản Beta 1.2
+Cập nhật: 16h:21 02/01/2015
+## Cập nhật Beta 1.2
+- Fix đồng bộ đăng nhập với trang chủ OHM 
+- Thêm trang adv/ohm.vn không can thiện extenstion
+
 ## Cập nhật Beta 1.1
 - Đồng bộ đăng nhập với trang chủ OHM
 - Không tác dụng lên các trang của OHM hoặc các trang là Publisher của OHM
