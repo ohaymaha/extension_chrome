@@ -1,0 +1,307 @@
+.ota-ohm-img-sp{
+	position: absolute !important;
+	top: 50% !important;
+	left: 50% !important;
+	margin-left: -40px !important;
+	margin-top: -50px !important;
+	width: 80px !important;
+	color: red !important;
+	text-align: center  !important;
+	font-size: 35px !important;
+	display: none;
+}
+.block:hover > .ota-ohm-img-sp{
+	display: block;
+}
+.ota-ohm-img-sp span{
+	margin-top: -60px;
+	font-size: 35px !important;
+	display: block !important;
+}
+.ota-ohm-img-sp img{
+	width: 78px !important;
+	height: auto !important;
+	z-index: inherit !important;
+}
+#ota-ohm-ads{
+	position: fixed !important;
+	bottom: 0px !important;
+	right: 0px !important;
+	border: 1px solid #8F5201; 
+	border-bottom: 0px !important;
+	z-index: 9999 !important;
+	padding: 0px !important;
+}
+#ota-ohm-ads img{ 
+	width: 175px !important; 
+	margin: 0px !important;
+}
+.fix_overflow, .fck_detail,#lu_pinned_rhs,.st,#brs{
+	overflow: inherit !important;
+}
+/*.fck_detail,#lu_pinned_rhs,.st,#brs,.scroll-pane{
+	overflow: inherit !important;
+}*/
+.tooltip-oat-ohm {
+	display: inline !important;
+	position: relative !important;
+	z-index: 999 !important;
+	background: none !important;
+}
+
+.tooltip-oat-ohm-link-ota{
+	display: none !important;
+	position: absolute !important;
+	background: #8F5201 !important;
+	width: 55px !important;
+	height: 25px !important;
+	top:-20px !important;
+	left: 0px !important;
+	color: #fff !important;
+	font-size: 15px !important;
+	font-weight: bold !important;
+	padding-top: 5px !important;
+	padding-left: 10px !important;
+	border-top: none !important;
+}
+.tooltip-oat-ohm-link-ota img{
+	width: 23px !important;
+	position: absolute !important;
+	right: 3px !important;
+	top: 3px !important;
+}
+.tooltip-oat-ohm-link{
+	position: relative !important;
+}
+.tooltip-oat-ohm-link:hover .tooltip-oat-ohm-link-ota{
+	display: block !important;
+}
+/* Trigger text */
+
+.tooltip-oat-ohm-item {
+	/*background: rgba(0,0,0,0.3);*/
+	cursor: pointer !important;
+	display: inline-block !important; 
+	padding: 0px !important;
+	z-index: 9999 !important;
+	/*color: red !important; */
+	white-space: nowrap !important;
+	border-top: none !important;
+	background: none !important;
+}
+
+/* Gap filler */
+
+/*.tooltip-oat-ohm-item::after {
+	content: '' !important;
+	position: absolute !important;
+	width: 333px !important;
+	height: 20px !important;
+	bottom: 100% !important;
+	left: 50% !important;
+	pointer-events: none !important;
+	background: none !important;
+}
+
+.tooltip-oat-ohm:hover .tooltip-oat-ohm-item::after {
+	pointer-events: auto !important;
+}*/
+
+/* Tooltip */ 
+.tooltip-oat-ohm-content {
+	position: absolute !important;
+	z-index: 9999;
+	z-index: 9999 !important;
+	width: 200px !important;
+	left: 50% !important;
+	margin: 0 0 0px -100px !important;
+	bottom: 100% !important;
+	text-align: left !important;
+	font-size: 0.765em !important;
+	line-height: 1.4 !important;
+	box-shadow: -5px -5px 15px rgba(48,54,61,0.2) !important;
+	background: #8F5201 !important;
+	opacity: 0 !important;
+	cursor: default !important;
+	pointer-events: none !important;
+	padding: 10px !important; 
+	height: auto !important;
+	border-top: none !important; 
+	border-radius: 10px;
+	border: 2px solid #E7C100;
+}
+
+/*.tooltip-oat-ohm-effect-1 .tooltip-oat-ohm-content {
+	-webkit-transform: translate3d(0,-10px,0);
+	transform: translate3d(0,-10px,0);
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+	z-index: 9999;
+	z-index: 9999 !important;
+}
+
+.tooltip-oat-ohm-effect-2 .tooltip-oat-ohm-content {
+	-webkit-transform-origin: 50% calc(100% + 10px);
+	transform-origin: 50% calc(100% + 10px);
+	-webkit-transform: perspective(1000px) rotate3d(1,0,0,45deg);
+	transform: perspective(1000px) rotate3d(1,0,0,45deg);
+	-webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+	transition: opacity 0.2s, transform 0.2s;
+	z-index: 9999;
+	z-index: 9999 !important;
+}
+
+.tooltip-oat-ohm-effect-3 .tooltip-oat-ohm-content {
+	-webkit-transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
+	transform: translate3d(0,10px,0) rotate3d(1,1,0,25deg);
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+	z-index: 9999;
+	z-index: 9999 !important;
+}*/
+
+.tooltip-oat-ohm-effect-4 .tooltip-oat-ohm-content {
+	-webkit-transform-origin: 50% 100%;
+	transform-origin: 50% 100%;
+	-webkit-transform: scale3d(0.7,0.3,1);
+	transform: scale3d(0.7,0.3,1);
+	-webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+	transition: opacity 0.2s, transform 0.2s;
+	z-index: 9999;
+	z-index: 9999 !important;
+}
+
+/*.tooltip-oat-ohm-effect-5 .tooltip-oat-ohm-content {
+	width: 180px !important;
+	margin-left: -90px !important;
+	-webkit-transform-origin: 50% calc(100% + 6em);
+	transform-origin: 50% calc(100% + 6em);
+	-webkit-transform: rotate3d(0,0,1,15deg);
+	transform: rotate3d(0,0,1,15deg);
+	-webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+	transition: opacity 0.2s, transform 0.2s;
+	-webkit-transition-timing-function: ease, cubic-bezier(.17,.67,.4,1.39);
+	transition-timing-function: ease, cubic-bezier(.17,.67,.4,1.39);
+	z-index: 9999;
+	z-index: 9999 !important;
+}*/
+
+.tooltip-oat-ohm:hover .tooltip-oat-ohm-content {
+	pointer-events: auto !important;
+	opacity: 1 !important;
+	-webkit-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
+	transform: translate3d(0,0,0) rotate3d(0,0,0,0);
+	z-index: 9999;
+	z-index: 9999 !important;
+}
+
+.tooltip-oat-ohm.tooltip-oat-ohm-effect-2:hover .tooltip-oat-ohm-content {
+	-webkit-transform: perspective(1000px) rotate3d(1,0,0,0deg);
+	transform: perspective(1000px) rotate3d(1,0,0,0deg);
+	z-index: 9999;
+	z-index: 9999 !important;
+}
+
+/* Arrow */
+
+/*.tooltip-oat-ohm-content::after {
+	content: '' !important;
+	top: 100% !important;
+	left: 50% !important;
+	border: solid transparent;
+	height: 0 !important;
+	width: 0 !important;
+	position: absolute !important;
+	pointer-events: none !important;
+	border-color: transparent !important;
+	border-top-color: #8F5201 !important;
+	border-width: 10px !important;
+	margin-left: -10px !important;
+	z-index: 9999;
+	z-index: 9999 !important;
+}*/
+
+/* Tooltip content*/
+
+
+
+.tooltip-oat-ohm-text { 
+	font-size: 12px !important;
+	line-height: 14px !important;
+	display: block !important;
+	/*padding: 1.31em 1.21em 1.21em 0; */
+	color: #fff !important;
+	font-weight: normal !important;
+	padding: 0px !important;
+	margin: 0px !important;
+	white-space: nowrap !important;
+	z-index: 9999;
+	z-index: 9999 !important;
+	border-top: none !important;
+	background: none !important;
+}
+
+
+/*h3{
+	overflow: inherit !important;
+}*/
+.tooltip-oat-ohm-text .tooltip-oat-ohm-h4{
+	margin: 0px !important;
+	font-weight: bold !important;
+	clear: both !important;
+	margin-bottom: 5px !important;
+	display: inline-block !important;
+	color: #FA5600 !important;
+	white-space: nowrap !important;
+	z-index: 9999;
+	z-index: 9999 !important;
+	border-top: none !important;
+	background: none !important;
+}
+.tooltip-oat-ohm-text .tooltip-oat-ohm-h4 .ota_ohm_key{
+	color: #ECCD03 !important;
+	border-top: none !important;
+	background: none !important;
+}
+.tooltip-oat-ohm-text .gotourl{ 
+	clear: both !important;
+	margin-bottom: 2px !important;
+	display: inline-block !important;
+	white-space: nowrap !important; 
+	cursor: pointer !important;
+	width: 190px !important;
+	overflow: hidden;
+	position: relative !important;
+	line-height: 30px !important;
+	border-bottom: 1px solid #926830 !important;
+	border-top: none !important;
+	color: #fff !important;
+	font-weight: normal !important;
+	font-size: 12px !important;
+	z-index: 9999;
+	z-index: 9999 !important;
+	background: none !important;
+}
+.tooltip-oat-ohm-text .gotourl .plusota{
+	position: absolute !important;
+	right: 0px !important;
+	top: 0px !important;
+	color: #fff !important;
+	font-weight: normal !important;
+	font-size: 12px !important;
+	border-top: none !important;
+	background: none !important;
+}
+.tooltip-oat-ohm-text .gotourl .plusota img{
+	width: 20px !important;
+	height: 20px !important;
+	vertical-align: middle !important;
+}
+
+.tooltip-oat-ohm-effect-5 .tooltip-oat-ohm-text {
+	padding: 1.4em;
+}
+
+.tooltip-oat-ohm-text a {
+	font-weight: bold !important;
+}
