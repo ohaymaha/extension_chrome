@@ -18,7 +18,7 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 	    OHMusername: '',
 	    OHMname: ''
 	 }, function(items) {   
-	 	console.log(items.OHMexpiryTime);
+	 	console.log(items.OHMexpiryTime); //gio
 	 	console.log(items.OHMrefreshKey);
 	 		if( items.OHMtokenKey == ''){ 
 	 			document.getElementsByTagName("body")[0].style.width = "300px"; 
@@ -150,6 +150,10 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 		                		'OHMexpiryTime': obj[1].expiryTime,
 		                		'OHMusername': username
 		               		 }, function() {
+		               		 	if(items.OHMdisable != 'yes'){
+		               		 		chrome.browserAction.setBadgeText({text: "on"});
+									chrome.browserAction.setBadgeBackgroundColor({ color: '#1FD002' });
+								}
 						        $('#noti').html('Đăng nhập thành công!');
 						    });
 						    setTimeout(function(){location.reload();},500); 
@@ -182,6 +186,8 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 		                		'OHMexpiryTime': '',
 		                		'OHMusername': '',
 		               		 }, function() {
+		               		 	chrome.browserAction.setBadgeText({text: "off"});
+								chrome.browserAction.setBadgeBackgroundColor({ color: '#cccccc' });
 						        location.reload();  
 						    });
 		                       
@@ -275,7 +281,7 @@ function kichhoat() {
 	$('#trangthai').text('đang sử dụng'); 
 	$('#trangthai').css('color','#1FD002'); 
 	chrome.browserAction.setBadgeText({text: "on"});
-			chrome.browserAction.setBadgeBackgroundColor({ color: '#1FD002' });
+	chrome.browserAction.setBadgeBackgroundColor({ color: '#1FD002' });
 }
 function reload_c_tab(){
 	chrome.tabs.reload();

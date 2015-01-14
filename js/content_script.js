@@ -5,7 +5,7 @@
  * @license   QCVVN JSC
  */  
  var domain = window.location.host;
-
+ var pubid = 5126463837700096;
  var flag = safety_zone(domain);
 
  if( flag ){
@@ -33,10 +33,18 @@
  * functions
  */ 
  function safety_zone(domain){
- 	if( domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
+ 	if( domain == 'oad.ohm.vn' || domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
  		return false;
  	}
  	var body = document.getElementsByTagName("body");
+ 	var str = body[0].innerHTML;  
+	var pattern = 'ads.ohm.vn/publisher.js'; 
+	var reg = new RegExp(pattern, "ig"); ; 
+	var is_publisher = reg.test(str);
+	if(is_publisher){
+		return false;
+	}
+	var body = document.getElementsByTagName("head");
  	var str = body[0].innerHTML;  
 	var pattern = 'ads.ohm.vn/publisher.js'; 
 	var reg = new RegExp(pattern, "ig"); ; 
@@ -118,12 +126,14 @@ function fix_title(){
 function add_key(key,color,tokenKey){
 	//console.log(tokenKey);
 	var xmlhttp = new XMLHttpRequest(); 
-	var url = 'http://ads.ohm.vn/keyword?url='+document.URL+'&a='+tokenKey; 
+	var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&a='+tokenKey; 
 	//var url = 'http://ads.ohm.vn/keyword?url='+document.URL; 
 	xmlhttp.onreadystatechange = function() {
 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 	        var arrkey = JSON.parse(xmlhttp.responseText); 
 	        var selector = arrkey.selector; 
+	        console.log(xmlhttp.responseText);
+	        console.log(arrkey);
 	        add_key_with_arr(key,arrkey.keyword,selector,color,tokenKey);
 	    }
 	}
@@ -204,7 +214,7 @@ function get_repl1(urls,color,tokenKey){
 	for (var key in urls) {
 	  if (urls.hasOwnProperty(key)) {  
 	  	var value = urls[key];
-	  	value.url = value.url + '&p=1805358581125207&a='+tokenKey;
+	  	value.url = value.url + '&p='+pubid+'&a='+tokenKey;
 	    repl = repl +"<span class='tooltip-oat-ohm-text'><span class='gotourl' onclick='return gotoota(\""+value.url+"\");' >&raquo; "+value.name+" <span class='plusota'>+ "+value.ota+" <img src='http://ohm.chaythu.com/Contents/Media/DongtienOHM_5.png' /></span></span></span>"; 
 	  }
 	} 
@@ -216,7 +226,7 @@ function get_repl2(urls,color,tokenKey){
 	for (var key in urls) {
 	  if (urls.hasOwnProperty(key)) {  
 	  	var value = urls[key];
-	  	value.url = value.url + '&p=1805358581125207&a='+tokenKey;
+	  	value.url = value.url + '&p='+pubid+'&a='+tokenKey;
 	    repl = repl +"<span class='tooltip-oat-ohm-text'><span class='gotourl' onclick='return gotoota(\""+value.url+"\");' >&raquo; "+value.name+" <span class='plusota'>+ "+value.ota+" <img src='http://ohm.chaythu.com/Contents/Media/DongtienOHM_5.png' /></span></span></span>"; 
 	  }
 	} 
@@ -228,7 +238,7 @@ function get_repl3(urls,color,tokenKey){
 	for (var key in urls) {
 	  if (urls.hasOwnProperty(key)) {  
 	  	var value = urls[key];
-	  	value.url = value.url + '&p=1805358581125207&a='+tokenKey;
+	  	value.url = value.url + '&p='+pubid+'&a='+tokenKey;
 	    repl = repl +"<span class='tooltip-oat-ohm-text'><span class='gotourl' onclick='return gotoota(\""+value.url+"\");' >&raquo; "+value.name+" <span class='plusota'>+ "+value.ota+" <img src='http://ohm.chaythu.com/Contents/Media/DongtienOHM_5.png' /></span></span></span>"; 
 	  }
 	} 

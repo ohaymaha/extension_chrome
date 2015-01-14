@@ -13,7 +13,7 @@
 	    OHMusername: '',
 	    OHMname: ''
   }, function(items) { 
-	    if( items.OHMdisable =='yes' ){ 
+	    if( items.OHMdisable =='yes' || items.OHMtokenKey == '' ){ 
 			chrome.browserAction.setBadgeText({text: "off"});
 			chrome.browserAction.setBadgeBackgroundColor({ color: '#cccccc' });
 		}
