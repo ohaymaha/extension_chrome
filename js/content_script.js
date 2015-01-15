@@ -33,7 +33,7 @@
  * functions
  */ 
  function safety_zone(domain){
- 	if( domain == 'oad.ohm.vn' || domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
+ 	if( domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
  		return false;
  	}
  	var body = document.getElementsByTagName("body");
@@ -127,12 +127,12 @@ function add_key(key,color,tokenKey){
 	//console.log(tokenKey);
 	var xmlhttp = new XMLHttpRequest(); 
 	var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&a='+tokenKey; 
-	//var url = 'http://ads.ohm.vn/keyword?url='+document.URL; 
+	//var url = 'http://ads.ohm.vn/keyword?url='+document.URL;
+	console.log(url); 
 	xmlhttp.onreadystatechange = function() {
 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 	        var arrkey = JSON.parse(xmlhttp.responseText); 
-	        var selector = arrkey.selector; 
-	        console.log(xmlhttp.responseText);
+	        var selector = arrkey.selector;  
 	        console.log(arrkey);
 	        add_key_with_arr(key,arrkey.keyword,selector,color,tokenKey);
 	    }
@@ -168,14 +168,23 @@ function add_key_with_arr_tag(key,arr,color,tokenKey){
 	} 
 }
 function replaceKeys(text,arr,color,tokenKey) {
+	var aop = []; 
+	aop[0] = [];
+	aop[1] = [];
 	for (var key in arr) {
 	  if (arr.hasOwnProperty(key)) { 
-	    text = replaceKey(text,key,arr[key],color,tokenKey);
+	    aop = replaceKey(text,aop,key,arr[key],color,tokenKey);
 	  }
 	} 
+	for (var key in aop[0]) {
+		var str_o = aop[0][key];
+		var str_n = aop[1][key];
+		text = text.replace(str_o,str_n);  
+	} 
+	//console.log(aop);
 	return text;
 }
-function replaceKey(text,key,urls,color,tokenKey){ 
+function replaceKey(text,aop,key,urls,color,tokenKey){ 
 	var pattern = '>([^<^>]*)\\s('+key+')\\s([^<^>]*)<';
 	var pattern1 = '>('+key+')\\s([^<^>]*)<';
 	var pattern2 = '>([^<^>]*)\\s('+key+')<';
@@ -191,11 +200,46 @@ function replaceKey(text,key,urls,color,tokenKey){
 	var repl2 = get_repl2(urls,color,tokenKey);
 	var repl3 = get_repl3(urls,color,tokenKey);
 
-	text = text.replace(exp,repl); 
-	text = text.replace(exp1,repl1); 
-	text = text.replace(exp2,repl2); 
-	text = text.replace(exp3,repl3); 
-	return text;
+	var arr = text.match(exp);
+	var arr1 = text.match(exp1);
+	var arr2 = text.match(exp2);
+	var arr3 = text.match(exp3); 
+
+	for (var key in arr) {
+		var str_o = arr[key];
+		var str_n = str_o.replace(exp,repl); 
+		aop[0].push(str_o);
+		aop[1].push(str_n);
+		//console.log(str_o);
+		//console.log(str_n);
+		//text = text.replace(str_o,str_n); 
+	} 
+	for (var key in arr1) {
+		var str_o = arr1[key];
+		var str_n = str_o.replace(exp,repl); 
+		//text = text.replace(str_o,str_n);
+		aop[0].push(str_o);
+		aop[1].push(str_n);
+	} 
+	for (var key in arr2) {
+		var str_o = arr2[key];
+		var str_n = str_o.replace(exp,repl); 
+		//text = text.replace(str_o,str_n); 
+		aop[0].push(str_o);
+		aop[1].push(str_n);
+	} 
+	for (var key in arr3) {
+		var str_o = arr3[key];
+		var str_n = str_o.replace(exp,repl); 
+		//text = text.replace(str_o,str_n); 
+		aop[0].push(str_o);
+		aop[1].push(str_n);
+	} 
+	// text = text.replace(exp,repl); 
+	// text = text.replace(exp1,repl1); 
+	// text = text.replace(exp2,repl2); 
+	// text = text.replace(exp3,repl3); 
+	return aop;
 }
 function get_repl(urls,color,tokenKey){
 	var repl =">$1 <span class='tooltip-oat-ohm tooltip-oat-ohm-effect-4 link_ota' ><span class='tooltip-oat-ohm-item' style='color: "+color+"'>$2</span><span  onclick='return false;' class='tooltip-oat-ohm-content clearfix'>";
