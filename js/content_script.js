@@ -128,19 +128,87 @@ function add_key(key,color,tokenKey){
 	var xmlhttp = new XMLHttpRequest(); 
 	var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&a='+tokenKey; 
 	//var url = 'http://ads.ohm.vn/keyword?url='+document.URL;
-	console.log(url); 
+	//console.log(url); 
 	xmlhttp.onreadystatechange = function() {
 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 	        var arrkey = JSON.parse(xmlhttp.responseText); 
 	        var selector = arrkey.selector;  
 	        console.log(arrkey);
 	        add_key_with_arr(key,arrkey.keyword,selector,color,tokenKey);
+	        add_url_with_arr(key,arrkey.url,color,tokenKey);
 	    }
 	}
 	xmlhttp.open("GET", url, true);  
 	xmlhttp.send(); 
 
 } 
+///////////////////////////////////////////////// BEGIN URL
+function add_url_with_arr(key,arr,color,tokenKey){
+	 add_url_with_arr_tag(key,arr,color,tokenKey);
+}
+function add_url_with_arr_tag(key,arr,color,tokenKey){
+	var ptag = document.getElementsByTagName(key);  
+	
+	for (var i=0, max=ptag.length; i < max; i++) {  
+		var tmp = ptag[i].innerHTML;
+		ptag[i].innerHTML = replaceUrls(tmp,arr,color,tokenKey); 
+	} 
+}
+function replaceUrls(text,arr,color,tokenKey) {
+
+	var aop = []; 
+	aop[0] = [];
+	aop[1] = [];
+	for (var key in arr) {
+	  if (arr.hasOwnProperty(key)) { 
+	  	var tmp = key;
+	  	key = key.replace('http://','');
+	  	key = key.replace('https://','');
+	  	key = key.replace(domain,'');
+	  	//console.log(key);
+	    aop = replaceUrl(text,aop,key,arr[tmp],color,tokenKey);
+	  }
+	} 
+	for (var key in aop[0]) {
+		var str_o = aop[0][key];
+		var str_n = aop[1][key];
+		text = text.replace(str_o,str_n);  
+	} 
+	console.log(aop);
+	return text;
+}
+function replaceUrl(text,aop,key,urls,color,tokenKey){ 
+	var pattern = '<a\\s(.*)\\shref=([\"\'])('+key+')([\"\'])\\s?(.*)\\s?>(.*)</a>'; 
+
+	var exp = new RegExp(pattern, "ig");   
+	var repl = get_repl_url(urls,color,tokenKey); 
+
+	var arr = text.match(exp); 
+
+	for (var key in arr) {
+		var str_o = arr[key];
+		var str_n = str_o.replace(exp,repl); 
+		aop[0].push(str_o);
+		aop[1].push(str_n);
+		// console.log(str_o);
+		// console.log(str_n); 
+	} 
+	 
+	return aop;
+}
+function get_repl_url(urls,color,tokenKey){ 
+	var repl ="<a $1 href='$3' $5 ><span class='tooltip-oat-ohm tooltip-oat-ohm-effect-4 link_ota' ><span class='tooltip-oat-ohm-item' style='color: "+color+"'>[OTA]<img src='http://ohm.chaythu.com/Contents/Media/DongtienOHM_5.png' class='img_ota_ohm' /></span><span  onclick='return false;' class='tooltip-oat-ohm-content clearfix'>";
+	for (var key in urls) {
+	  if (urls.hasOwnProperty(key)) {  
+	  	var value = urls[key];
+	  	value.url = value.url + '&p=1805358581125207&a='+tokenKey;
+	    repl = repl +"<span class='tooltip-oat-ohm-text'><span class='gotourl' onclick='return gotoota(\""+value.url+"\");' >&raquo; "+value.name+" <span class='plusota'>+ "+value.ota+" <img src='http://ohm.chaythu.com/Contents/Media/DongtienOHM_5.png' /></span></span></span>"; 
+	  }
+	} 
+	repl = repl + "</span></span> $6</a>";
+	return repl;
+}
+///////////////////////////////////////////////// END URL
 function add_key_with_arr(key,arr,selector,color,tokenKey){
 	if( selector =='.fl.wid470'){
 		var classname = 'wid470';
@@ -168,6 +236,7 @@ function add_key_with_arr_tag(key,arr,color,tokenKey){
 	} 
 }
 function replaceKeys(text,arr,color,tokenKey) {
+
 	var aop = []; 
 	aop[0] = [];
 	aop[1] = [];

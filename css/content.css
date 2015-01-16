@@ -1,3 +1,7 @@
+.img_ota_ohm{
+	width: 25px !important;
+	height: 25px !important;
+}
 .ota-ohm-img-sp{
 	position: absolute !important;
 	top: 50% !important;
