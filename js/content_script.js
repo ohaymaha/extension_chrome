@@ -166,6 +166,7 @@ function replaceUrls(text,arr,color,tokenKey) {
 	  	key = key.replace('https://','');
 	  	key = key.replace(domain,'');
 	  	//console.log(key);
+	    aop = replaceUrl(text,aop,tmp,arr[tmp],color,tokenKey);
 	    aop = replaceUrl(text,aop,key,arr[tmp],color,tokenKey);
 	  }
 	} 
