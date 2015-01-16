@@ -33,7 +33,7 @@
  * functions
  */ 
  function safety_zone(domain){
- 	if( domain == 'oad.ohm.vn' || domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
+ 	if( domain == 'facebook.com' || domain == 'oad.ohm.vn' || domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
  		return false;
  	}
  	var body = document.getElementsByTagName("body");
@@ -126,8 +126,8 @@ function fix_title(){
 function add_key(key,color,tokenKey){
 	//console.log(tokenKey);
 	var xmlhttp = new XMLHttpRequest(); 
-	var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&a='+tokenKey; 
-	//var url = 'http://ads.ohm.vn/keyword?url='+document.URL;
+	//var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&a='+tokenKey; 
+	var url = 'http://ads.ohm.vn/keyword?url='+document.URL;
 	//console.log(url); 
 	xmlhttp.onreadystatechange = function() {
 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -162,9 +162,12 @@ function replaceUrls(text,arr,color,tokenKey) {
 	for (var key in arr) {
 	  if (arr.hasOwnProperty(key)) { 
 	  	var tmp = key;
+	  	key = key.replace('http://www','');
 	  	key = key.replace('http://','');
 	  	key = key.replace('https://','');
+	  	key = key.replace('https://www','');
 	  	key = key.replace(domain,'');
+	  	//console.log(tmp);
 	  	//console.log(key);
 	    aop = replaceUrl(text,aop,tmp,arr[tmp],color,tokenKey);
 	    aop = replaceUrl(text,aop,key,arr[tmp],color,tokenKey);
@@ -179,7 +182,7 @@ function replaceUrls(text,arr,color,tokenKey) {
 	return text;
 }
 function replaceUrl(text,aop,key,urls,color,tokenKey){ 
-	var pattern = '<a\\s(.*)\\shref=([\"\'])('+key+')([\"\'])\\s?(.*)\\s?>(.*)</a>'; 
+	var pattern = '<a([^<^>]*)href=([\"\'])('+key+')([\"\'])([^<^>]*)>(.*)</a>'; 
 
 	var exp = new RegExp(pattern, "ig");   
 	var repl = get_repl_url(urls,color,tokenKey); 
@@ -198,7 +201,7 @@ function replaceUrl(text,aop,key,urls,color,tokenKey){
 	return aop;
 }
 function get_repl_url(urls,color,tokenKey){ 
-	var repl ="<a $1 href='$3' $5 ><span class='tooltip-oat-ohm tooltip-oat-ohm-effect-4 link_ota' ><span class='tooltip-oat-ohm-item' style='color: "+color+"'>[OTA]<img src='http://ohm.chaythu.com/Contents/Media/DongtienOHM_5.png' class='img_ota_ohm' /></span><span  onclick='return false;' class='tooltip-oat-ohm-content clearfix'>";
+	var repl ="<a $1 href='$3' $5 ><span class='tooltip-oat-ohm tooltip-oat-ohm-effect-4 link_ota' ><span class='tooltip-oat-ohm-item' style='color: "+color+"'>[OTA]</span><span  onclick='return false;' class='tooltip-oat-ohm-content clearfix'>";
 	for (var key in urls) {
 	  if (urls.hasOwnProperty(key)) {  
 	  	var value = urls[key];
@@ -206,7 +209,7 @@ function get_repl_url(urls,color,tokenKey){
 	    repl = repl +"<span class='tooltip-oat-ohm-text'><span class='gotourl' onclick='return gotoota(\""+value.url+"\");' >&raquo; "+value.name+" <span class='plusota'>+ "+value.ota+" <img src='http://ohm.chaythu.com/Contents/Media/DongtienOHM_5.png' /></span></span></span>"; 
 	  }
 	} 
-	repl = repl + "</span></span> $6</a>";
+	repl = repl + "</span></span>$6</a>";
 	return repl;
 }
 ///////////////////////////////////////////////// END URL

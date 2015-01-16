@@ -66,7 +66,8 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 		            dataType: 'JSON',
 		            data: "",
 		            success: function(data){ 
-		                var obj = JSON.parse(data);      
+		                var obj = JSON.parse(data); 
+		                console.log(obj);     
 		                $('#info_avatar').html('<img src="'+obj[1].avatar+'"/>');
 		                $('#info_name').html(obj[1].fullName);
 
