@@ -126,9 +126,9 @@ function fix_title(){
 function add_key(key,color,tokenKey){
 	//console.log(tokenKey);
 	var xmlhttp = new XMLHttpRequest(); 
-	//var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&a='+tokenKey; 
-	var url = 'http://ads.ohm.vn/keyword?url='+document.URL;
-	//console.log(url); 
+	var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&a='+tokenKey; 
+	//var url = 'http://ads.ohm.vn/keyword?url='+document.URL;
+	console.log(url); 
 	xmlhttp.onreadystatechange = function() {
 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 	        var arrkey = JSON.parse(xmlhttp.responseText); 
