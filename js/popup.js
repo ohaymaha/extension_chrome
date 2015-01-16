@@ -67,7 +67,19 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 		            data: "",
 		            success: function(data){ 
 		                var obj = JSON.parse(data); 
-		                console.log(obj);     
+		                console.log(obj);   
+		                if( obj[0].State == 2  ){
+		                	chrome.storage.sync.set({
+		                		'OHMtokenKey': '',
+		                		'OHMrefreshKey': '',
+		                		'OHMexpiryTime': '',
+		                		'OHMusername': '',
+		               		 }, function() {
+		               		 	chrome.browserAction.setBadgeText({text: "off"});
+								chrome.browserAction.setBadgeBackgroundColor({ color: '#cccccc' });
+						        location.reload();  
+						    });
+		                }
 		                $('#info_avatar').html('<img src="'+obj[1].avatar+'"/>');
 		                $('#info_name').html(obj[1].fullName);
 

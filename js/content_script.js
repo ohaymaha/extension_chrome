@@ -5,6 +5,7 @@
  * @license   QCVVN JSC
  */  
  var domain = window.location.host;
+ console.log(domain);
  var pubid = 5126463837700096;
  var flag = safety_zone(domain);
 
@@ -33,7 +34,7 @@
  * functions
  */ 
  function safety_zone(domain){
- 	if( domain == 'facebook.com' || domain == 'oad.ohm.vn' || domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
+ 	if( domain == 'www.facebook.com' || domain == 'facebook.com' || domain == 'oad.ohm.vn' || domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
  		return false;
  	}
  	var body = document.getElementsByTagName("body");
