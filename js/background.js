@@ -5,15 +5,9 @@
  * @license   QCVVN JSC
  */
  chrome.storage.sync.get({
-   		OHMdisable: 'no',
-    	OHMfavoriteColor: '#F20D0D',
-	    OHMtokenKey: '',
-	    OHMrefreshKey: '',
-	    OHMexpiryTime: '',
-	    OHMusername: '',
-	    OHMname: ''
+   		OHMdisable: 'no'
   }, function(items) { 
-	    if( items.OHMdisable =='yes' || items.OHMtokenKey == '' ){ 
+	    if( items.OHMdisable =='yes'  ){ 
 			chrome.browserAction.setBadgeText({text: "off"});
 			chrome.browserAction.setBadgeBackgroundColor({ color: '#cccccc' });
 		}

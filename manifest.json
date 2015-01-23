@@ -8,7 +8,7 @@
   "name": "Kính soi OTA",
   "description": "Extension phát triển bởi Trần Quang Châu <quangchauvn@gmail.com>.",
   "version": "1.0",
-  "content_security_policy": "script-src 'self' https://*.google-analytics.com; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "permissions": [
       "tabs",
       "storage",
@@ -16,20 +16,20 @@
   ],
   "background": {
       "scripts": ["js/background.js"]
-	},
+  },
   "browser_action": {
       "default_icon": "img/icon.png",
       "default_popup": "html/popup.html"
   }, 
   "options_page": "html/options.html",
   "web_accessible_resources": [
-      "js/helper_script.js"
+      "js/publisher.js",
+      "css/tip-yellow.css"
   ],
   "content_scripts": [
     {
       "matches": [ "http://*/*", "https://*/*" ],
-      "js": ["js/content_script.js"], 
-      "css": ["css/content.css"],
+      "js": ["js/content_script.js"],  
       "run_at": "document_idle"
     }
   ]

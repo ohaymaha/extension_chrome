@@ -8,26 +8,28 @@
  console.log(domain);
  var pubid = 5126463837700096;
  var flag = safety_zone(domain);
+ var protocol = window.location.protocol;
+ if(protocol =='https:'){
+ 	var ssl = true;
+ }
+ else
+ {
+ 	var ssl = false;
+ } 
 
- if( flag ){
- 	console.log('OHM Extension');
+ if( flag && !ssl ){
+ 	console.log('OHM Extension'); 
  	chrome.storage.sync.get({
-	  	OHMdisable: 'no',
-		OHMfavoriteColor: '#F20D0D',
-	    OHMtokenKey: '',
-	    OHMrefreshKey: '',
-	    OHMexpiryTime: '',
-	    OHMusername: '',
-	    OHMname: ''
+	  	OHMdisable: 'no'
 	}, function(items) { 
-	    if( items.OHMdisable !='yes'  && items.OHMtokenKey != '' ){ 
-			extension_main(items.OHMfavoriteColor,items.OHMtokenKey);  
+	    if( items.OHMdisable !='yes'  ){ 
+			extension_main();  
 		}
 		else
 		{
 
 		} 
-	});
+	});  
  } 
   
 /**
@@ -55,15 +57,11 @@
 	}
  	return true;
  }
-function extension_main(color,tokenKey){ 
-	//fix_title(); 	  
-	add_script(); 
+function extension_main(){  
 	fix_overflow();   
-	setTimeout(function(){add_key("body",color,tokenKey);},500);      
+	add_key();      
 }  
-function fix_overflow(){  
-	//fix_overflow_tag("li");  
-	//fix_overflow_tag("h3");  
+function fix_overflow(){    
 	fix_overflow_class("title_box_category");  
 	fix_overflow_class("nav");  
 	fix_overflow_class("box27");  
@@ -71,18 +69,14 @@ function fix_overflow(){
 	fix_overflow_class("wrapper");  
 	fix_overflow_class("ulBlockMenu");  
 	fix_overflow_class("lineFmenu");  
-	fix_overflow_class("footerMenu");  
-
-	//fix_overflow_tagname('div');
+	fix_overflow_class("footerMenu");   
 	fix_overflow_tagname('h3');
 	fix_overflow_tagname('li');
-	fix_overflow_tagname('span');
-	//fix_overflow_tagname('ul');
+	fix_overflow_tagname('span'); 
 } 
 function fix_overflow_tagname(tag){  
 	var ptag = document.getElementsByTagName(tag); 
 	for (var i=0, max=ptag.length; i < max; i++) {  
-		//var tmp = ptag[i].style.overflow;
 		ptag[i].style.overflow = "inherit";
 	}
 } 
@@ -93,70 +87,31 @@ function fix_overflow_tag(tag){
 		ptag[i].setAttribute('class',tmp + ' fix_overflow');
 	}
 }  
-function fix_overflow_class(classname){  
-	//document.addEventListener('DOMSubtreeModified', function(e) {
-		var ptag = document.getElementsByClassName(classname); 
-		for (var i=0, max=ptag.length; i < max; i++) {  
-			var tmp = ptag[i].getAttribute('class');
-			ptag[i].setAttribute('class',tmp + ' fix_overflow');
-		}
-	//}); 
-} 
-function add_script(){
-	var s = document.createElement('script'); 
-	s.src = chrome.extension.getURL('js/helper_script.js');
-	s.onload = function() {
-	    this.parentNode.removeChild(this);
-	};
-	(document.head||document.documentElement).appendChild(s);
-} 
-function fix_title(){
-	var ptag = document.getElementsByTagName("a");
-	for (var i=0, max=ptag.length; i < max; i++) { 
-		 ptag[i].setAttribute('title','');
-		 ptag[i].setAttribute('alt','');
-		 ptag[i].setAttribute('bi:linkid',''); 
-	}
-	var ptag = document.getElementsByTagName("img");
-	for (var i=0, max=ptag.length; i < max; i++) { 
-		 ptag[i].setAttribute('title','');
-		 ptag[i].setAttribute('alt','');
-		 ptag[i].setAttribute('bi:linkid','');
-	}
-}  
-
- 
-
-
-
-
-function add_key(key,color,tokenKey){
-
-	var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&p='+pubid; 
-	
+function fix_overflow_class(classname){   
+	var ptag = document.getElementsByClassName(classname); 
+	for (var i=0, max=ptag.length; i < max; i++) {  
+		var tmp = ptag[i].getAttribute('class');
+		ptag[i].setAttribute('class',tmp + ' fix_overflow');
+	} 
+}   
+function add_key(){  
 	var script_var = document.createElement("script");
-    var script_var_t = document.createTextNode("var pubid = "+pubid+"; var ohm_color = '"+color+"'; var ohm_tokenKey = '"+tokenKey+"'");  
+    var script_var_t = document.createTextNode("var pubId = "+pubid+";");  
 	script_var.appendChild(script_var_t); 
-    document.body.appendChild(script_var);  
+    document.head.appendChild(script_var);  
 
+    var url = chrome.extension.getURL('js/publisher.js');
     var script = document.createElement("script");
     script.src = url;
-    document.body.appendChild(script);  
-	//console.log(tokenKey);
-	// var xmlhttp = new XMLHttpRequest(); 
-	// var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&a='+tokenKey; 
-	// //var url = 'http://ads.ohm.vn/keyword?url='+document.URL;
-	// console.log(url); 
-	// xmlhttp.onreadystatechange = function() {
-	//     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-	//         var arrkey = JSON.parse(xmlhttp.responseText); 
-	//         var selector = arrkey.selector;  
-	//         console.log(arrkey);
-	//         add_key_with_arr(key,arrkey.keyword,selector,color,tokenKey);
-	//         add_url_with_arr(key,arrkey.url,color,tokenKey);
-	//     }
-	// }
-	// xmlhttp.open("GET", url, true);  
-	// xmlhttp.send(); 
+    document.head.appendChild(script);  
 
+
+
+  
+    var link  = document.createElement('link'); 
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = chrome.extension.getURL('css/tip-yellow.css');//'http://ads.ohm.vn/tip-yellow.css';
+    link.media = 'all';
+    document.body.appendChild(link);  
 } 

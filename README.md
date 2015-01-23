@@ -1,6 +1,10 @@
 ## Phiên bản hiện tại
-Phiên bản Beta 1.3
-Cập nhật: 16h:15 23/01/2015
+Phiên bản Beta 1.4
+Cập nhật: 03h:28 24/01/2015
+
+## Cập nhật Beta 1.4
+- Dùng publisher xử lý content web
+- Đồng bộ đăng nhập, chuyển đăng nhập và đăng ký về trang chủ OHM
 
 ## Cập nhật Beta 1.3
 - Chuyển sang dùng JSONP
