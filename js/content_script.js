@@ -133,7 +133,12 @@ function fix_title(){
 function add_key(key,color,tokenKey){
 
 	var url = 'https://ohay-maha.appspot.com/keyword?url='+document.URL+'&p='+pubid; 
-	 
+	
+	var script_var = document.createElement("script");
+    var script_var_t = document.createTextNode("var pubid = "+pubid+"; var ohm_color = '"+color+"'; var ohm_tokenKey = '"+tokenKey+"'");  
+	script_var.appendChild(script_var_t); 
+    document.body.appendChild(script_var);  
+
     var script = document.createElement("script");
     script.src = url;
     document.body.appendChild(script);  

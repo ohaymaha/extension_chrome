@@ -4,7 +4,7 @@
  * @author    Quang Chau Tran <quangchauvn at gmail dot com>
  * @license   QCVVN JSC
  */ 
-var pubid = 5126463837700096;
+
 function gotoota(url){ 
 	var tab=window.open(url,'_blank'); 
 	tab.focus();  
@@ -13,8 +13,8 @@ function gotoota(url){
 function jsonCallback(arrkey) { 
         var selector = arrkey.selector;  
         console.log(arrkey);
-        add_key_with_arr('body',arrkey.keyword,selector,'red','tokenKey');
-        add_url_with_arr('body',arrkey.url,'red','tokenKey');  
+        add_key_with_arr('body',arrkey.keyword,selector,ohm_color,ohm_tokenKey);
+        add_url_with_arr('body',arrkey.url,ohm_color,ohm_tokenKey);  
 } 
 
 ///////////////////////////////////////////////// BEGIN URL
@@ -194,7 +194,7 @@ function get_repl(urls,color,tokenKey){
 	for (var key in urls) {
 	  if (urls.hasOwnProperty(key)) {  
 	  	var value = urls[key];
-	  	value.url = value.url + '&p=1805358581125207&a='+tokenKey;
+	  	value.url = value.url + '&p='+pubid+'&a='+tokenKey;
 	    repl = repl +"<span class='tooltip-oat-ohm-text'><span class='gotourl' onclick='return gotoota(\""+value.url+"\");' >&raquo; "+value.name+" <span class='plusota'>+ "+value.ota+" <img src='http://ohm.chaythu.com/Contents/Media/DongtienOHM_5.png' /></span></span></span>"; 
 	  }
 	} 
