@@ -1,8 +1,10 @@
 ## Phiên bản hiện tại
 Phiên bản Beta 1.3
 Cập nhật: 16h:15 23/01/2015
+
 ## Cập nhật Beta 1.3
 - Chuyển sang dùng JSONP
+
 ## Cập nhật Beta 1.2
 - Fix đồng bộ đăng nhập với trang chủ OHM 
 - Thêm trang adv.ohm.vn, oad.ohm.vn vào list không hiệu lực extension
