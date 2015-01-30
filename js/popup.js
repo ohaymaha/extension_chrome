@@ -16,23 +16,8 @@ $.ajax({
     	tokenkeyohm = tokenkeyohm.substring(0, tokenkeyohm.length - 1);    
 
     	 
-        	if( tokenkeyohm == ''){ 
-				document.getElementsByTagName("body")[0].style.width = "300px"; 
-				document.getElementsByTagName("body")[0].style.height = "150px"; 
-				$('.OHMlogin').show(); 
-				$('.OHMuserpanel').hide();  
-
-		        $('#btnlogin').click(function(){   
-					  chrome.tabs.update( null, { url: "http://account.ohm.vn/login" } );  
-		        });
-		        $('#btnregister').click(function(){   
-					  chrome.tabs.update( null, { url: "http://account.ohm.vn/register" } );  
-		        });
-
-			}
-			else
-			{
-				//
+        	if( tokenkeyohm != ''){ 
+        		///////////////////
 				chrome.storage.sync.get({
 				    OHMdisable: 'no'
 				 }, function(items) {  
@@ -109,8 +94,24 @@ $.ajax({
 					kichhoat(); 
 					reload_c_tab();
 				});
+				///////////////////
 
+			}
+			else
+			{
+				//
+				document.getElementsByTagName("body")[0].style.width = "300px"; 
+				document.getElementsByTagName("body")[0].style.height = "150px"; 
+				$('.OHMlogin').show(); 
+				$('.OHMuserpanel').hide();  
 
+		        $('#btnlogin').click(function(){   
+					  chrome.tabs.update( null, { url: "http://account.ohm.vn/login" } );  
+		        });
+		        $('#btnregister').click(function(){   
+					  chrome.tabs.update( null, { url: "http://account.ohm.vn/register" } );  
+		        });
+				//
 			}
 	/////////////////////////////////////////////////////
     }

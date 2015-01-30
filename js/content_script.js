@@ -17,7 +17,7 @@
  	var ssl = false;
  } 
 
- if( flag && !ssl ){
+if( flag && !ssl ){
  	console.log('OHM Extension'); 
  	chrome.storage.sync.get({
 	  	OHMdisable: 'no'
@@ -100,13 +100,11 @@ function add_key(){
 	script_var.appendChild(script_var_t); 
     document.head.appendChild(script_var);  
 
-    var url = chrome.extension.getURL('js/publisher.js');
+    // var url = chrome.extension.getURL('js/publisher.js');
+    var url = 'http://ads.ohm.vn/publisher.js';
     var script = document.createElement("script");
     script.src = url;
     document.head.appendChild(script);  
-
-
-
   
     var link  = document.createElement('link'); 
     link.rel  = 'stylesheet';
