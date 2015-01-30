@@ -60,7 +60,8 @@ function extension_main(){
 	var script_var = document.createElement("script");
     var script_var_t = document.createTextNode("var pubId = "+pubid+";");  
 	script_var.appendChild(script_var_t); 
-    document.head.appendChild(script_var);   
+    //document.head.appendChild(script_var);   
+    document.head.insertBefore(script_var, document.head.firstChild);   
     // var url = chrome.extension.getURL('js/publisher.js');
     var url = 'http://ads.ohm.vn/publisher.js';
     var script = document.createElement("script");
