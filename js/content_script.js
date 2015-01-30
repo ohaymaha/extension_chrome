@@ -27,11 +27,10 @@ if( flag && !ssl ){
 		}
 		else
 		{
-
+			//
 		} 
 	});  
- } 
-  
+ }  
 /**
  * functions
  */ 
@@ -56,60 +55,18 @@ if( flag && !ssl ){
 		return false;
 	}
  	return true;
- }
+}
 function extension_main(){  
-	fix_overflow();   
-	add_key();      
-}  
-function fix_overflow(){    
-	fix_overflow_class("title_box_category");  
-	fix_overflow_class("nav");  
-	fix_overflow_class("box27");  
-	fix_overflow_class("box3");  
-	fix_overflow_class("wrapper");  
-	fix_overflow_class("ulBlockMenu");  
-	fix_overflow_class("lineFmenu");  
-	fix_overflow_class("footerMenu");   
-	fix_overflow_tagname('h3');
-	fix_overflow_tagname('li');
-	fix_overflow_tagname('span'); 
-} 
-function fix_overflow_tagname(tag){  
-	var ptag = document.getElementsByTagName(tag); 
-	for (var i=0, max=ptag.length; i < max; i++) {  
-		ptag[i].style.overflow = "inherit";
-	}
-} 
-function fix_overflow_tag(tag){  
-	var ptag = document.getElementsByTagName(tag); 
-	for (var i=0, max=ptag.length; i < max; i++) {  
-		var tmp = ptag[i].getAttribute('class');
-		ptag[i].setAttribute('class',tmp + ' fix_overflow');
-	}
-}  
-function fix_overflow_class(classname){   
-	var ptag = document.getElementsByClassName(classname); 
-	for (var i=0, max=ptag.length; i < max; i++) {  
-		var tmp = ptag[i].getAttribute('class');
-		ptag[i].setAttribute('class',tmp + ' fix_overflow');
-	} 
-}   
-function add_key(){  
 	var script_var = document.createElement("script");
     var script_var_t = document.createTextNode("var pubId = "+pubid+";");  
 	script_var.appendChild(script_var_t); 
-    document.head.appendChild(script_var);  
-
+    document.head.appendChild(script_var);   
     // var url = chrome.extension.getURL('js/publisher.js');
     var url = 'http://ads.ohm.vn/publisher.js';
     var script = document.createElement("script");
     script.src = url;
-    document.head.appendChild(script);  
-  
-    var link  = document.createElement('link'); 
-    link.rel  = 'stylesheet';
-    link.type = 'text/css';
-    link.href = chrome.extension.getURL('css/tip-yellow.css');//'http://ads.ohm.vn/tip-yellow.css';
-    link.media = 'all';
-    document.body.appendChild(link);  
-} 
+    //document.head.appendChild(script);    
+    document.head.insertBefore(script, document.head.firstChild);   
+    console.log('OHM OK');
+}  
+ 
