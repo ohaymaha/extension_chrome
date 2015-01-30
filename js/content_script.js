@@ -62,8 +62,8 @@ function extension_main(){
 	script_var.appendChild(script_var_t); 
     //document.head.appendChild(script_var);   
     document.head.insertBefore(script_var, document.head.firstChild);   
-    // var url = chrome.extension.getURL('js/publisher.js');
-    var url = 'http://ads.ohm.vn/publisher.js';
+    var url = chrome.extension.getURL('js/publisher.js');
+    // var url = 'http://ads.ohm.vn/publisher.js';
     var script = document.createElement("script");
     script.src = url;
     //document.head.appendChild(script);    

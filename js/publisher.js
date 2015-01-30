@@ -497,7 +497,7 @@ function loadKeyword() {
     		url : urlOhm+"keyword?url="+location.href+"&p="+pubId,
     		dataType: 'jsonp',
     		contentType: "application/json",
-    		jsonpCallback: 'jsonCallback',
+    		jsonpCallback: 'jsonCallbackOhm',
     		success : function(result) {	
     			var obj = result ;
     			var selector = obj.selector; 
@@ -661,7 +661,7 @@ function logout(info) {
 		url : logoutohm,
 		dataType: 'jsonp',
 		contentType: "application/json",
-		jsonpCallback: 'jsonCallback',
+		jsonpCallback: 'jsonCallbackOhm',
 		success : function(result) {	
 			if (result.logoutohm == "success") {
 				if(info != "noinfo")
