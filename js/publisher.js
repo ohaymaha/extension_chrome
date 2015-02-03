@@ -914,14 +914,14 @@ function loadKeyword() {
     			
     		 
     			
-    			OhmJquery( "body *" ).each(function( index ) {
-    			     OHM_Handle_Get(this);
-    			});
+    			// OhmJquery( "body *" ).each(function( index ) {
+    			//      OHM_Handle_Get(this);
+    			// });
     			
     			ptag[0].innerHTML =text; 
     			
     			//OhmJquery( "body *" ).each(function( index ) {
- 			       	 OHM_Handle_Set();
+ 			       	 // OHM_Handle_Set();
     			//});
     			
     			ohmToolTip (); 
