@@ -5,16 +5,14 @@
  * @license   QCVVN JSC
  */ 
 $.ajax({
-    url: 'http://account.ohm.vn/check', 
+    url: 'http://ads.ohm.vn/check', 
     type: 'GET',  
     success: function(tokenkeyohm){
     	///////////////////////////////////////////////////// 
-    	tokenkeyohm = tokenkeyohm.replace("var accessKey='","");   
-    	tokenkeyohm = tokenkeyohm.replace("'","");   
-    	tokenkeyohm = tokenkeyohm.replace("\\r", "");    
-    	tokenkeyohm = tokenkeyohm.replace("\\n", "");    
-    	tokenkeyohm = tokenkeyohm.substring(0, tokenkeyohm.length - 1);    
-
+    	// tokenkeyohm = tokenkeyohm.replace("var accessKey='","");   
+    	// tokenkeyohm = tokenkeyohm.replace("'","");   
+    	// tokenkeyohm = tokenkeyohm.replace("\\r", "");    
+    	// tokenkeyohm = tokenkeyohm.replace("\\n", "");       
     	 
         	if( tokenkeyohm != ''){ 
         		///////////////////

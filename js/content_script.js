@@ -35,25 +35,21 @@ if( flag && !ssl ){
  * functions
  */ 
  function safety_zone(domain){
- 	if( domain == 'www.facebook.com' || domain == 'facebook.com' || domain == 'oad.ohm.vn' || domain == 'account.ohm.vn' || domain =='adv.ohm.vn' || domain =='ads.ohm.vn'){
+ 	if( domain == 'www.facebook.com' 
+ 		|| domain == 'facebook.com' 
+ 		|| domain == 'oad.ohm.vn' 
+ 		|| domain == 'account.ohm.vn' 
+ 		|| domain =='adv.ohm.vn' 
+ 		|| domain =='ads.ohm.vn'
+ 		// || domain =='www.tintute.com'
+ 		// || domain =='tintute.com'
+ 		// || domain =='green-tech.vn'
+ 		// || domain =='www.green-tech.vn'
+
+ 		){
  		return false;
  	}
- 	var body = document.getElementsByTagName("body");
- 	var str = body[0].innerHTML;  
-	var pattern = 'ads.ohm.vn/publisher.js'; 
-	var reg = new RegExp(pattern, "ig"); ; 
-	var is_publisher = reg.test(str);
-	if(is_publisher){
-		return false;
-	}
-	var body = document.getElementsByTagName("head");
- 	var str = body[0].innerHTML;  
-	var pattern = 'ads.ohm.vn/publisher.js'; 
-	var reg = new RegExp(pattern, "ig"); ; 
-	var is_publisher = reg.test(str);
-	if(is_publisher){
-		return false;
-	}
+ 
  	return true;
 }
 function extension_main(){  

@@ -138,6 +138,7 @@
 	 overflow: hidden;
 	 text-overflow: ellipsis;
 	 display: block;
+	 text-align: left;
 }
 #ohm-tooltip .tooltip-oat-ohm-text .gotourl .plusota {
 	 position: absolute !important;
