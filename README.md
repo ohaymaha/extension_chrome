@@ -1,6 +1,9 @@
 ## Phiên bản hiện tại
-Phiên bản Beta 1.4
-Cập nhật: 03h:28 24/01/2015
+Phiên bản Beta 1.5
+Cập nhật: 12h:40  05/02/2015
+
+## Cập nhật Beta 1.5
+- Fix lỗi mất events js khi chèn từ khoá
 
 ## Cập nhật Beta 1.4
 - Dùng publisher xử lý content web
