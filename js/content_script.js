@@ -2,68 +2,64 @@
  * Extension OHM v 1.0
  *
  * @author    Quang Chau Tran <quangchauvn at gmail dot com>
- * @license   QCVVN JSC
+ * @license   OHAYMAHA
  */  
- var domain = window.location.host;
- console.log(domain);
- var pubid = 5126463837700096;
- var flag = safety_zone(domain);
- var protocol = window.location.protocol;
- if(protocol =='https:'){
- 	var ssl = true;
- }
- else
- {
- 	var ssl = false;
- } 
+var domain = window.location.host;
+var pubid = 5714142736416768;
+var flag = safety_zone(domain);
+var protocol = window.location.protocol;
 
-if( flag && !ssl ){
- 	console.log('OHM Extension'); 
+if(protocol =='https:'){
+	var ssl = true;
+}
+else{
+	var ssl = false;
+} 
+
+if( flag && !ssl ){ 
  	chrome.storage.sync.get({
 	  	OHMdisable: 'no'
 	}, function(items) { 
 	    if( items.OHMdisable !='yes'  ){ 
 			extension_main();  
 		}
-		else
-		{
-			//
+		else{
+			//do notthing
 		} 
 	});  
  }  
 /**
  * functions
  */ 
- function safety_zone(domain){
- 	if( domain == 'www.facebook.com' 
- 		|| domain == 'facebook.com' 
- 		|| domain == 'oad.ohm.vn' 
- 		|| domain == 'account.ohm.vn' 
- 		|| domain =='adv.ohm.vn' 
- 		|| domain =='ads.ohm.vn'
- 		// || domain =='www.tintute.com'
- 		// || domain =='tintute.com'
- 		// || domain =='green-tech.vn'
- 		// || domain =='www.green-tech.vn'
+function safety_zone(domain){
+    var start = domain.length - 6;
+    var ohmsites = domain.substring(start,domain.length); 
+    if( ohmsites == 'ohm.vn'){
+        return false;
+    }  
+    // var header = document.getElementsByTagName('head')[0].innerHTML;  
+    // var body = document.getElementsByTagName('body')[0].innerHTML; 
+    // var patt = new RegExp("http://ads.ohm.vn/publisher.js","ig");
+    
+    // if( patt.test(header) ){
+    //     return false;
+    // } 
 
- 		){
- 		return false;
- 	}
- 
- 	return true;
+    // if( patt.test(body) ){
+    //     return false;
+    // } 
+
+    return true;
 }
 function extension_main(){  
 	var script_var = document.createElement("script");
     var script_var_t = document.createTextNode("var pubId = "+pubid+";");  
 	script_var.appendChild(script_var_t); 
-    //document.head.appendChild(script_var);   
-    document.head.insertBefore(script_var, document.head.firstChild);   
-    var url = chrome.extension.getURL('js/publisher.js');
-    // var url = 'http://ads.ohm.vn/publisher.js';
-    var script = document.createElement("script");
-    script.src = url;
-    //document.head.appendChild(script);    
-    document.head.insertBefore(script, document.head.firstChild);   
-    console.log('OHM OK');
+  
+    document.head.insertBefore(script_var, document.head.firstChild); 
+    var script = document.createElement("script"); 
+    script.src = 'http://ads.ohm.vn/publisher.js';    
+    document.head.insertBefore(script, document.head.firstChild);  
+
+    console.log('Bạn đang sử dụng Công cụ khai thác OTA của OHAYMAHA trên trình duyệt Chrome');
 }  
- 

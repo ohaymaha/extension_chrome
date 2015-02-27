@@ -12,7 +12,8 @@
   "permissions": [
       "tabs",
       "storage",
-      "contextMenus"
+      "contextMenus",
+      "webNavigation"
   ],
   "background": {
       "scripts": ["js/background.js"]
@@ -21,10 +22,11 @@
       "default_icon": "img/icon.png",
       "default_popup": "html/popup.html"
   }, 
-  "options_page": "html/options.html",
   "web_accessible_resources": [
-      "js/publisher.js",
-      "css/tip-yellow.css"
+      "chat/chatAPI.js",
+      "chat/LoadEmotion.js",
+      "chat/ReplaceString.js",
+      "chat/CreateHtml.js"
   ],
   "content_scripts": [
     {

@@ -18,6 +18,13 @@
 		} 
   });
 
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.method == "getToken")
+      sendResponse({token: localStorage['tokenkeyohm']});
+    else
+      sendResponse({}); // snub them.
+});
  
 // wiki
 // var wikihistory=[],wikicache={},currentHistoryPosition=0,currentLangState=0;

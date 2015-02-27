@@ -3,18 +3,16 @@
  *
  * @author    Quang Chau Tran <quangchauvn at gmail dot com>
  * @license   QCVVN JSC
- */ 
+ */  
+$('#loading').html('<img src="'+chrome.extension.getURL('img/load.gif')+'"/>'); 
 $.ajax({
     url: 'http://ads.ohm.vn/check', 
     type: 'GET',  
     success: function(tokenkeyohm){
-    	///////////////////////////////////////////////////// 
-    	// tokenkeyohm = tokenkeyohm.replace("var accessKey='","");   
-    	// tokenkeyohm = tokenkeyohm.replace("'","");   
-    	// tokenkeyohm = tokenkeyohm.replace("\\r", "");    
-    	// tokenkeyohm = tokenkeyohm.replace("\\n", "");       
-    	 
+    	/////////////////////////////////////////////////////      
         	if( tokenkeyohm != ''){ 
+        		localStorage.setItem("tokenkeyohm", tokenkeyohm);
+        		 
         		///////////////////
 				chrome.storage.sync.get({
 				    OHMdisable: 'no'
@@ -32,51 +30,60 @@ $.ajax({
 					}  
 				 });
 
+				$('#loading').hide(); 
 				$('.OHMlogin').hide(); 
 				$('.OHMuserpanel').show();    
 				
 				$.ajax({
-				    url: 'http://user.api.ohm.vn/me', 
-				    beforeSend: function (request)
-				    {
-				        request.setRequestHeader("E8668OHM", tokenkeyohm);
-				    }, 
-				    type: 'POST',
-				    dataType: 'JSON',
-				    data: "",
-				    success: function(data){ 
-				        var obj = JSON.parse(data); 
-				        console.log(obj);   
-				        if( obj[0].State == 2  ){ 
-						        location.reload(); 
+					url : 'http://userv2.api.ohm.vn/me',
+					type : "POST",
+					headers : { 
+						'E8668OHM' : tokenkeyohm,
+					},
+					dataType : 'json',
+					async : false,
+					success : function(response) { 
+
+						if( response.state == 2  ){ 
+						     $.ajax({
+							    url: 'http://ads.ohm.vn/logout', 
+							    type: 'GET',  
+							    success: function(response){
+							    	location.reload();  
+							  		chrome.tabs.reload(); 
+							    }
+							 }); 
 				        }
-				        $('#info_avatar').html('<img src="'+obj[1].avatar+'"/>');
-				        $('#info_name').html(obj[1].fullName);
 
-				    }
-				}); 
+						var user = JSON.parse(response.responseBody.user);
+
+				        $('#info_avatar').html('<img src="'+user.avatar+'"/>');
+				        $('#info_name').html(user.fullName);
+					}
+				});
 				$.ajax({
-				    url: 'http://user.api.ohm.vn/ota/notainbag', 
-				    beforeSend: function (request)
-				    {
-				        request.setRequestHeader("E8668OHM", tokenkeyohm);
-				    }, 
-				    type: 'POST',
-				    dataType: 'JSON',
-				    data: "",
-				    success: function(data){   
-				        $('#countota1').html(data.tsOTAprize+' OTA');
-				        $('#countota2').html(data.tsOTAstore+' OTA');
-				        $('#countota3').html(data.tsOTAdeal+' OTA');
-
-				    }
+					url : 'http://user.api.ohm.vn/ota/notainbag',
+					type : "POST",
+					headers : { 
+						'E8668OHM' : tokenkeyohm,
+					},
+					dataType : 'json',
+					async : false,
+					success : function(response) {   
+						var obj = JSON.parse(response.responseBody.accounting); 
+						console.log(obj);
+						$('#countota1').html(obj.tsOTAprize+' OTA');
+				        $('#countota2').html(obj.tsOTAstore+' OTA');
+				        $('#countota3').html(obj.tsOTAdeal+' OTA');
+					}
 				});
 
+ 
 				$('#btnlogout').click(function(){ 
 					 $.ajax({
 					    url: 'http://ads.ohm.vn/logout', 
 					    type: 'GET',  
-					    success: function(tokenkeyohm){
+					    success: function(response){
 					    	location.reload();  
 					  		chrome.tabs.reload(); 
 					    }
@@ -100,14 +107,24 @@ $.ajax({
 				//
 				document.getElementsByTagName("body")[0].style.width = "300px"; 
 				document.getElementsByTagName("body")[0].style.height = "150px"; 
+				$('#loading').hide(); 
 				$('.OHMlogin').show(); 
 				$('.OHMuserpanel').hide();  
 
+				document.getElementsByTagName("body")[0].style.width = "300px"; 
+				document.getElementsByTagName("body")[0].style.height = "150px";
+
+				document.getElementsByTagName("html")[0].style.width = "300px"; 
+				document.getElementsByTagName("html")[0].style.height = "150px";
+
+
 		        $('#btnlogin').click(function(){   
-					  chrome.tabs.update( null, { url: "http://account.ohm.vn/login" } );  
+					  chrome.tabs.update( null, { url: "http://account.ohm.vn/login" , selected: true} ); 
+					  window.close(); 
 		        });
 		        $('#btnregister').click(function(){   
-					  chrome.tabs.update( null, { url: "http://account.ohm.vn/register" } );  
+					  chrome.tabs.update( null, { url: "http://account.ohm.vn/register" , selected: true} );  
+					  window.close();
 		        });
 				//
 			}

@@ -1,6 +1,9 @@
 ## Phiên bản hiện tại
-Phiên bản Beta 1.5
-Cập nhật: 12h:40  05/02/2015
+Phiên bản Beta 1.6
+Cập nhật: 10h:52  27/02/2015
+
+## Cập nhật Beta 1.6
+- Thêm tính năng đa ngôn ngữ
 
 ## Cập nhật Beta 1.5
 - Fix lỗi mất events js khi chèn từ khoá

@@ -5,6 +5,11 @@ body {
   width: 500px;
   height: 300px;
 }
+#loading{
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+}
 .glyphicon{
   font-size: 18px;
   color: #9E9E9E; 

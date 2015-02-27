@@ -1,18 +1,13 @@
-<!doctype html>
-<!--By Tran Quang Chau <quangchauvn@gmail.com>-->
 <html>
   <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Kính soi OTA</title> 
     <link rel="stylesheet" href="../css/bt/css/bootstrap.css" media="all" />
     <link rel="stylesheet" href="../css/style.css" media="all" />
-    <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script> 
-    <script src="../js/jquery.simple-color-picker.js"></script> 
-    <script type="text/javascript" src="../js/popup.js"></script>
-
+    <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>  
   </head>
   <body>
-    
+    <div id="loading"></div>
     <div class="OHMlogin">
       
       <p class="bg-info">  Extension này được dùng để khai thác OTA của OHM. Hãy đăng nhập hoặc đăng ký vào hệ thống của OHM để có thể nhận được OTA
@@ -38,10 +33,12 @@
 
           </div>
           <div class="right">
-            <a href="http://account.ohm.vn/account" target="_black" /><span id="info_avatar"></span></a>
-            <a href="http://account.ohm.vn/account" target="_black" /><span id="info_name"></span></a>
-            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+            <a href="http://account.ohm.vn/userinfo" target="_black" /><span id="info_avatar"></span></a>
+            <a href="http://account.ohm.vn/userinfo" target="_black" /><span id="info_name"></span></a>
+            <!--
+              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+            -->
             
             <a href="#" id="btnlogout">Đăng xuất</a>
           </div> 
@@ -83,11 +80,11 @@
         </div> 
       </div> 
       <div class="bottom_navigation"> 
-        <a href="http://account.ohm.vn/account" target="_black">Trang cá nhân</a>   
-        <a href="http://account.ohm.vn/ohmota" target="_black">Quản lý OTA</a> 
+        <a href="http://account.ohm.vn/userinfo" target="_black">Thông tin cá nhân</a>   
+        <a href="http://account.ohm.vn/totalota" target="_black">Quản lý OTA</a> 
       </div> 
 
     </div>  
+    <script type="text/javascript" src="../js/popup.js"></script>
   </body>
 </html>
-
