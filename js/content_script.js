@@ -58,7 +58,7 @@ function extension_main(){
     document.head.insertBefore(script, document.head.firstChild);  
 
     //for chat
-    chatOHM();
+    //chatOHM();
 
     console.log('Bạn đang sử dụng Công cụ khai thác OTA của OHAYMAHA trên trình duyệt Chrome');
 }

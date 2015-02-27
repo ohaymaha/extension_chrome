@@ -78,7 +78,7 @@ function closeChannel(){
 			}
 		});
 	}else{
-		alert('refreshtokenkey');//refreshtokenkey();
+		refreshtokenkey();
 	}
 }
 
@@ -132,7 +132,7 @@ function createChannel(){
 					sendNotifyOn();
 					timeout_init();
 				}else{
-					alert('Line 112');
+					//alert('Line 112');
 					//window.location.replace("http://account.ohm.vn/login");
 				}
 				
@@ -143,9 +143,35 @@ function createChannel(){
 			}
 	});	
 	}else{
-		alert('Line 128');//refreshtokenkey();
+		refreshtokenkey();
 	}
 	
+}
+function refreshtokenkey() {
+    var refreshToken = getCookie("__ohmr__");
+    if (refreshToken == "" || refreshToken == "undefined") {
+    	window.location.replace("http://account.ohm.vn/login");
+    	return;
+    }
+    var obj = {};
+    obj.refreshToken = refreshToken;
+    OhmJquery.ajax({
+        url: 'http://user.api.ohm.vn/getAccessToken',
+        data: JSON.stringify(obj),
+        dataType: 'json',
+        type: 'POST',
+        async: false,
+        success: function (data) {
+            var obj = JSON.parse(data);
+            if (obj[0].State == 1) {
+            	document.cookie ="__ohmr__=" + obj[1].refreshKey + "; domain=.ohm.vn;path=/";
+				document.cookie ="__ohmt__=" + obj[1].tokenKey + "; domain=.ohm.vn;path=/";
+				window.location.replace("http://chat.ohm.vn");
+            } else {
+            	window.location.replace("http://account.ohm.vn/login");
+            }
+        }
+    });
 }
 function onOpened() {
 	    //alert("Channel opened !");
@@ -239,13 +265,13 @@ function sendNotifyOn(){
 			},
 		});	
 	}else{
-		alert('sendNotifyOn');
+		//alert('sendNotifyOn');
 	}
 	
 }
 
 
 function cookieErorr(){
-	alert('cookieErorr');
+	//alert('cookieErorr');
 }
 
