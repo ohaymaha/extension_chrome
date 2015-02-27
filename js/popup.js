@@ -13,7 +13,7 @@ $.ajax({
     	tokenkeyohm = obj.t;
     	refreshtokenkeyohm = obj.r;
     	/////////////////////////////////////////////////////      
-        	if( tokenkeyohm != ''){ 
+        	if( tokenkeyohm != undefined && tokenkeyohm != 'undefined' && tokenkeyohm != ''){ 
         		localStorage.setItem("tokenkeyohm", tokenkeyohm);
         		 
         		///////////////////
@@ -121,13 +121,21 @@ $.ajax({
 				document.getElementsByTagName("html")[0].style.height = "150px";
 
 
-		        $('#btnlogin').click(function(){   
-					  chrome.tabs.update( null, { url: "http://account.ohm.vn/login" , selected: true} ); 
-					  window.close(); 
+		        $('#btnlogin').click(function(){  
+		         	chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+						var url = tabs[0].url; 
+						chrome.tabs.update( null, { url: "http://account.ohm.vn/login?continue="+url , selected: true} ); 
+					  	window.close();  
+					});
+					  
 		        });
-		        $('#btnregister').click(function(){   
-					  chrome.tabs.update( null, { url: "http://account.ohm.vn/register" , selected: true} );  
-					  window.close();
+		        $('#btnregister').click(function(){ 
+		        	chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+						var url = tabs[0].url; 
+						chrome.tabs.update( null, { url: "http://account.ohm.vn/register?continue="+url , selected: true} );  
+					  	window.close(); 
+					});  
+					 
 		        });
 				//
 			}
