@@ -75,26 +75,9 @@ var DeniedHTML = [
     { "key": "</frameset>", "value": "&lt;/frameset&gt;" },
     { "key": "<script", "value": "&lt;script" },
     { "key": "</script>", "value": "&lt;/script&gt;" },
-    { "key": "<", "value": "&lt;" }
-//    { "key": "<m", "value": "&lt;m" },
-//    { "key": "<p", "value": "&lt;p" },
-//    { "key": "<s", "value": "&lt;s" },
-//    { "key": "<d", "value": "&lt;d" },
-//    { "key": "<h", "value": "&lt;h" },
-//    { "key": "<b", "value": "&lt;b" },
-//    { "key": "<t", "value": "&lt;t" },
-//    { "key": "<t", "value": "&lt;t" },
-//    { "key": "<n", "value": "&lt;n" },
-//    { "key": "</in", "value": "&lt;/in" },
-//    { "key": "</m", "value": "&lt;/m" },
-//    { "key": "</p", "value": "&lt;/p" },
-//    { "key": "</s", "value": "&lt;/s" },
-//    { "key": "</d", "value": "&lt;/d" },
-//    { "key": "</h", "value": "&lt;/h" },
-//    { "key": "</b", "value": "&lt;/b" },
-//    { "key": "</t", "value": "&lt;/t" },
-//    { "key": "</t", "value": "&lt;/t" },
-//    { "key": "</n", "value": "&lt;/n" }
+    { "key": "<", "value": "&lt;" },
+    { "key": "\"", "value": "&apos;&apos;" },
+    { "key": "\'", "value": "&apos;" }
 ];
 
 function myReplace(str) {

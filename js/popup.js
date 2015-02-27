@@ -8,7 +8,10 @@ $('#loading').html('<img src="'+chrome.extension.getURL('img/load.gif')+'"/>');
 $.ajax({
     url: 'http://ads.ohm.vn/check', 
     type: 'GET',  
-    success: function(tokenkeyohm){
+    success: function(response){
+    	var obj = JSON.parse(response);
+    	tokenkeyohm = obj.t;
+    	refreshtokenkeyohm = obj.r;
     	/////////////////////////////////////////////////////      
         	if( tokenkeyohm != ''){ 
         		localStorage.setItem("tokenkeyohm", tokenkeyohm);

@@ -23,15 +23,14 @@
       "default_popup": "html/popup.html"
   }, 
   "web_accessible_resources": [
-      "chat/chatAPI.js",
-      "chat/LoadEmotion.js",
-      "chat/ReplaceString.js",
-      "chat/CreateHtml.js"
+      "chat/chat.js",
+      "js/pub.js"
   ],
   "content_scripts": [
     {
       "matches": [ "http://*/*", "https://*/*" ],
-      "js": ["js/content_script.js"],  
+      "js": ["js/jquery-1.11.1.min.js","js/content_script.js"],  
+      "css":["css/chat.css"],
       "run_at": "document_start"
     }
   ]

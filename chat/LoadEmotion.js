@@ -1,7 +1,7 @@
 function loadIcon(value){
 	var idd = value.id;
 	var id =$("#"+idd).attr("data");
-	var state = $("#"+idd).attr("state");
+	var state = $("#"+idd).attr("stateonline");
 	var tabsCount = database.length/16;
 	if(tabsCount%1 >0){
 		tabsCount = tabsCount + 1;
@@ -24,7 +24,7 @@ function loadIcon(value){
 				$("#box-emotion-"+id).append("<div id='tabs-emotion-content-"+i+"' class='tabs-emotion-content current'></div>");
 				$.each(database, function(y,value){
 					if(y <= i*15){
-						$("#box-emotion-"+id+" #tabs-emotion-content-"+i).append("<img src='http://chat.ohm.vn/images/icon/"+value.value+"' id='emotion"+id+"' data='"+id+"' value='"+value.value+"' alt='"+value.key+"' state='"+state+"' onclick='sendMessage(13,this)'>");
+						$("#box-emotion-"+id+" #tabs-emotion-content-"+i).append("<img src='images/icon/"+value.value+"' id='emotion"+id+"' data='"+id+"' value='"+value.value+"' alt='"+value.key+"' stateonline='"+state+"' onclick='sendMessage(13,this)'>");
 					}
 				});
 			}else{
@@ -32,7 +32,7 @@ function loadIcon(value){
 				$("#box-emotion-"+id).append("<div id='tabs-emotion-content-"+i+"' class='tabs-emotion-content'></div>");
 				$.each(database, function(y,value){
 					if((i-1)*15 < y&& y <= i*15){
-						$("#box-emotion-"+id+" #tabs-emotion-content-"+i).append("<img src='http://chat.ohm.vn/images/icon/"+value.value+"' id='emotion"+id+"' data='"+id+"' value='"+value.value+"' alt='"+value.key+"' state='"+state+"' onclick='sendMessage(13,this)'>");
+						$("#box-emotion-"+id+" #tabs-emotion-content-"+i).append("<img src='images/icon/"+value.value+"' id='emotion"+id+"' data='"+id+"' value='"+value.value+"' alt='"+value.key+"' stateonline='"+state+"' onclick='sendMessage(13,this)'>");
 					}
 				});
 			}
