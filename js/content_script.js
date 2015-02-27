@@ -58,7 +58,7 @@ function extension_main(){
     document.head.insertBefore(script, document.head.firstChild);  
 
     //for chat
-    //chatOHM();
+    chatOHM();
 
     console.log('Bạn đang sử dụng Công cụ khai thác OTA của OHAYMAHA trên trình duyệt Chrome');
 }
@@ -70,10 +70,10 @@ function chatOHM(){
             var obj = JSON.parse(response);
             tokenkeyohm = obj.t;
             refreshtokenkeyohm = obj.r;
-            if( tokenkeyohm != ''){ 
+            if( tokenkeyohm != undefined && tokenkeyohm != 'undefined' && tokenkeyohm != ''){ 
                 console.log(tokenkeyohm);
                 OHMcreateCookie(tokenkeyohm,refreshtokenkeyohm,111); 
-  
+                    console.log('Chat nao');
                 var script = document.createElement("script");        
                 script.src = 'https://talkgadget.google.com/talkgadget/channel.js';       
                 document.head.insertBefore(script, document.head.firstChild);
@@ -128,9 +128,9 @@ function OHMcreateCookie(tokenKey, refreshKey, expiryTime) {
     var datetime = new Date();
     datetime = datetime.setTime(datetime.getTime()
             + (expiryTime * 60 * 60 * 1000));
-    OHMsetCookie("__ohmr__", refreshKey, 7);
-    OHMsetCookie("__ohmt__", tokenKey, expiryTime);
-    OHMsetCookie("expiryTime", datetime, expiryTime);
+    OHMsetCookie("__ext1_ohmr__", refreshKey, 7);
+    OHMsetCookie("__ext1_ohmt__", tokenKey, expiryTime);
+    OHMsetCookie("ext1_expiryTime", datetime, expiryTime);
 }
 function OHMgetCookie(cname) {
     var name = cname + "=";

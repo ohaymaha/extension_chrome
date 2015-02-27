@@ -56,7 +56,7 @@ function getCookie(cname) {
  * close channel
  *-----------------------------------------------------------*/ 
 function closeChannel(){
-	if(getCookie("__ohmt__")!=""){
+	if(getCookie("__ext1_ohmt__")!=""){
 		var obj = new Object();
 		obj.deviceOnline = navigator.userAgent;
 		OhmJquery.ajax({
@@ -87,7 +87,7 @@ function closeChannel(){
  * cho user và thông báo đến  friend là user online
  *----------------------------------------------------------------------------------------*/ 
 OhmJquery(function(){
-	var token = getCookie("__ohmt__"); 
+	var token = getCookie("__ext1_ohmt__"); 
 	createChannel();
 });
 /*----------------------------------------------------------------------------------------*
@@ -99,7 +99,7 @@ OhmJquery(function(){
  * data[4] chứa thông tin user vừa đăng nhập 
  *----------------------------------------------------------------------------------------*/ 
 function createChannel(){
-	if(getCookie("__ohmt__")!=""){
+	if(getCookie("__ext1_ohmt__")!=""){
 		var obj = new Object();
 		obj.deviceOnline = navigator.userAgent;
 		OhmJquery.ajax({
@@ -107,7 +107,7 @@ function createChannel(){
 			beforeSend : function(request) {
 				request.withCredentials = true;
 				request.setRequestHeader(
-						"E8668OHM",getCookie("__ohmt__"));
+						"E8668OHM",getCookie("__ext1_ohmt__"));
 			},
 			type : "POST",
 			dataType : "json",
@@ -148,7 +148,7 @@ function createChannel(){
 	
 }
 function refreshtokenkey() {
-    var refreshToken = getCookie("__ohmr__");
+    var refreshToken = getCookie("__ext1_ohmr__");
     if (refreshToken == "" || refreshToken == "undefined") {
     	window.location.replace("http://account.ohm.vn/login");
     	return;
@@ -176,6 +176,24 @@ function refreshtokenkey() {
 function onOpened() {
 	    //alert("Channel opened !");
 }
+function notifyMe(title,body,avatar) {
+  if (!Notification) { 
+    return;
+  }
+
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+
+  var notification = new Notification(title, {
+    icon: avatar,
+    body: body,
+  });
+
+
+  notification.onclick = function () {
+    window.open("http://chat.ohm.vn");
+  }
+}
 /*-----------------------------------------------------------*
  * onMessage sảy ra bên friend, khi user gửi message qua channel của friend
  *-----------------------------------------------------------*/ 
@@ -192,17 +210,21 @@ function onMessage(msg) {
 		var userIdRecent = $("#idTo").text();
 		
 		if(userIdTo!=userIdRecent){
-			var html = '<div class="notify_box_ohm" >'
-						  +'<div class="notify_box_ohm_left"><img src="'+avatar+'" /></div>'
-						  +'<a href="http://chat.ohm.vn" target="_black"><div class="notify_box_ohm_right"><h4>'+userNameTo+'</h4>'
+			var title = userNameTo;
+			var body = 'Vừa gửi tin nhắn cho bạn';
+			console.log('có tin nhắn');
+			notifyMe(title,body,avatar);
+			// var html = '<div class="notify_box_ohm" >'
+			// 			  +'<div class="notify_box_ohm_left"><img src="'+avatar+'" /></div>'
+			// 			  +'<a href="http://chat.ohm.vn" target="_black"><div class="notify_box_ohm_right"><h4>'+userNameTo+'</h4>'
 						  
-						  +'Vừa gửi tin nhắn cho bạn</div></a>'
-						  +'</div>';
-			OhmJquery('.notify_box_ohm').remove();
-			OhmJquery('body').append(html);
-			setTimeout(function() {
-			      OhmJquery('.notify_box_ohm').remove();
-			}, 5000);
+			// 			  +'Vừa gửi tin nhắn cho bạn</div></a>'
+			// 			  +'</div>';
+			// OhmJquery('.notify_box_ohm').remove();
+			// OhmJquery('body').append(html);
+			// setTimeout(function() {
+			//       OhmJquery('.notify_box_ohm').remove();
+			// }, 5000);
 				//alert('Bạn có tin nhắn mới từ '+userNameTo);   
 		}
 	}
@@ -247,7 +269,7 @@ function onMessage(msg) {
  *----------------------------------------------------------------------------------------*/ 
 function sendNotifyOn(){
 	// gui notifile den ban be
-	if(getCookie("__ohmt__")!=""){
+	if(getCookie("__ext1_ohmt__")!=""){
 		var obj = new Object();
 		obj.status = "notifyOn";
 		OhmJquery.ajax({
@@ -255,7 +277,7 @@ function sendNotifyOn(){
 			beforeSend : function(request) {
 				request.withCredentials = true;
 				request.setRequestHeader(
-						"E8668OHM",getCookie("__ohmt__"));
+						"E8668OHM",getCookie("__ext1_ohmt__"));
 			},
 			type : "POST",
 			dataType : "json",

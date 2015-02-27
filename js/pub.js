@@ -22,10 +22,10 @@ if (location.href.indexOf("localhost:8888") != -1) {
 } else {
 	var urlOhm = "http://ads.ohm.vn/";
 }
-var nameOhm = "__ohm__";
-var tohm = "__tohm__";
-var nameColorOhm = "__color__";
-var nameCheckOhm= "__check__";
+var nameOhm = "__ext_pub_ohm__";
+var tohm = "__ext_pub_tohm__";
+var nameColorOhm = "__ext_pub_olor__";
+var nameCheckOhm= "__ext_pub_check__";
 var clOhm = "FF171F";
 var colorOhm = "color:#"+clOhm;
 var loginOHM = "http://account.ohm.vn/login";
