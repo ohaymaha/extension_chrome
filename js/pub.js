@@ -260,8 +260,8 @@ function getCookie(cname) {
 function eraseCookie (name,path,domain) {
 	if (getCookie(name)) {
 		document.cookie = name + "=" +
-		((path == null) ? "" : "; path=" + path) +
-		((domain == null) ? "" : "; domain=" + domain) +
+		//((path == null) ? "" : "; path=" + path) +
+		//((domain == null) ? "" : "; domain=" + domain) +
 		"; expires=Thu, 01-Jan-70 00:00:01 GMT";
 	}
 }

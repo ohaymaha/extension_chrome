@@ -4,6 +4,7 @@
  * @author    Quang Chau Tran <quangchauvn at gmail dot com>
  * @license   QCVVN JSC
  */  
+
 $('#loading').html('<img src="'+chrome.extension.getURL('img/load.gif')+'"/>'); 
 $.ajax({
     url: 'http://ads.ohm.vn/check', 

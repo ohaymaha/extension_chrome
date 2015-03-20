@@ -1,9 +1,3 @@
-/**
- * Extension OHM v 1.0
- *
- * @author    Quang Chau Tran <quangchauvn at gmail dot com>
- * @license   OHAYMAHA
- */  
 var domain = window.location.host;
 var pubid = 5714142736416768;
 var flag = safety_zone(domain);
@@ -58,7 +52,7 @@ function extension_main(){
     document.head.insertBefore(script, document.head.firstChild);  
 
     //for chat
-    chatOHM();
+    //chatOHM();
 
     console.log('Bạn đang sử dụng Công cụ khai thác OTA của OHAYMAHA trên trình duyệt Chrome');
 }
@@ -73,45 +67,16 @@ function chatOHM(){
             if( tokenkeyohm != undefined && tokenkeyohm != 'undefined' && tokenkeyohm != ''){ 
                 console.log(tokenkeyohm);
                 OHMcreateCookie(tokenkeyohm,refreshtokenkeyohm,111); 
-                    console.log('Chat nao');
+                    
                 var script = document.createElement("script");        
                 script.src = 'https://talkgadget.google.com/talkgadget/channel.js';       
                 document.head.insertBefore(script, document.head.firstChild);
 
                 var script = document.createElement("script");        
                 script.src = chrome.extension.getURL('chat/chat.js');       
-                document.head.insertBefore(script, document.head.firstChild);
- 
-                // var url ='http://chat.ohm.vn/js/LoadEmotion.js'; var script = document.createElement("script"); script.src = url; document.head.insertBefore(script, document.head.firstChild); 
-                // var url ='http://chat.ohm.vn/js/ReplaceString.js'; var script = document.createElement("script"); script.src = url; document.head.insertBefore(script, document.head.firstChild); 
-                // var url ='http://chat.ohm.vn/js/chatAPI.js'; var script = document.createElement("script"); script.src = url; document.head.insertBefore(script, document.head.firstChild); 
-                // var url ='http://chat.ohm.vn/js/CreateHtml.js'; var script = document.createElement("script"); script.src = url; document.head.insertBefore(script, document.head.firstChild); 
-                // var url ='http://chat.ohm.vn/js/CreateHtmlLoading.js'; var script = document.createElement("script"); script.src = url; document.head.insertBefore(script, document.head.firstChild);  
+                document.head.insertBefore(script, document.head.firstChild); 
                 
-                // var headID = document.getElementsByTagName("head")[0];         
-                // var cssNode = document.createElement('link');
-                // cssNode.type = 'text/css';
-                // cssNode.rel = 'stylesheet';
-                // cssNode.href = 'http://chat.ohm.vn/css/Icon-loading.css';
-                // cssNode.media = 'screen';
-                // headID.appendChild(cssNode);
-
-                // var headID = document.getElementsByTagName("head")[0];         
-                // var cssNode = document.createElement('link');
-                // cssNode.type = 'text/css';
-                // cssNode.rel = 'stylesheet';
-                // cssNode.href = 'http://chat.ohm.vn/css/Emotion.css';
-                // cssNode.media = 'screen';
-                // headID.appendChild(cssNode);
-
-                // var headID = document.getElementsByTagName("head")[0];         
-                // var cssNode = document.createElement('link');
-                // cssNode.type = 'text/css';
-                // cssNode.rel = 'stylesheet';
-                // cssNode.href = 'http://chat.ohm.vn/css/ChatBox.css';
-                // cssNode.media = 'screen';
-                // headID.appendChild(cssNode);
- 
+                console.log('Chat nao');
             }
         }
     });

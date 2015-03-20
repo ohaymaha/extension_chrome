@@ -89,6 +89,7 @@ function closeChannel(){
 OhmJquery(function(){
 	var token = getCookie("__ext1_ohmt__"); 
 	createChannel();
+	console.log('aa');
 });
 /*----------------------------------------------------------------------------------------*
  * Tạo channel đồng thời lấy luôn ra list friend.
@@ -114,6 +115,7 @@ function createChannel(){
 			data : JSON.stringify(obj),
 			success : function(data) {
 				if(data[0].State==1){
+					console.log('tao xong');
 					channel = new goog.appengine.Channel(data[1].channel);
 					socket = channel.open();
 					socket.onopen = onOpened;
@@ -189,10 +191,11 @@ function notifyMe(title,body,avatar) {
     body: body,
   });
 
-
-  notification.onclick = function () {
-    window.open("http://chat.ohm.vn");
-  }
+chrome.windows.create({url:"http://chat.ohm.vn",type:"panel", width:256,height:600,focused: true}); 
+ 
+  // notification.onclick = function () {
+  //   window.open("http://chat.ohm.vn");
+  // }
 }
 /*-----------------------------------------------------------*
  * onMessage sảy ra bên friend, khi user gửi message qua channel của friend
